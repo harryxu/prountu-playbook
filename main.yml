@@ -58,6 +58,7 @@
   tasks:
     - include_tasks: tasks/zoxide.yml
     - include_tasks: tasks/fonts.yml
+    - include_tasks: tasks/kitty.yml
 
     - name: Setup dotconfig
       become: false
