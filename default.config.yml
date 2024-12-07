@@ -1,0 +1,7 @@
+---
+  timezone: Asia/Shanghai
+
+  # Docker
+  docker_install_compose_plugin: true
+  docker_users:
+    - "{{ current_username.stdout }}"

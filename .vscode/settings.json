@@ -1,0 +1,7 @@
+{
+  "ansible.validation.lint.enabled": false,
+  "files.associations": {
+    "*.yml": "ansible",
+  },
+  "ansible.python.interpreterPath": "/opt/homebrew/bin/python3"
+}
