@@ -41,11 +41,17 @@
       action: command whoami
       register: current_username
 
-    - name: Ensure dotconfig directory exists.
+    - name: Ensure directories exists.
       become: false
       file:
-        path: /home/{{ current_username.stdout }}/.config
+        path: /home/{{ current_username.stdout }}/{{ item }}
+        recurse: yes
         state: directory
+
+      with_items:
+        - ".config"
+        - ".local/share/applications"
+        - ".local/bin"
 
     - name: Dot config git directory.
       stat:

@@ -12,8 +12,7 @@
     fonts:
       # `pkg` for font package name while download
       # `check` for font file to check font exists
-      - { pkg: VictorMono, check: "VictorMonoNerdFont-Medium.ttf" }
-      - { pkg: Inconsolata, check: "InconsolataNerdFont-Regular.ttf" }
+      - { pkg: UbuntuMono, check: "UbuntuMonoNerdFontMono-Regular.ttf" }
 
   stat:
     path: "/home/{{ current_username.stdout }}/.fonts/{{ item.check }}"
