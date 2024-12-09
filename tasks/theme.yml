@@ -3,7 +3,7 @@
     theme_pack: Nightfox-GTK-Theme
     theme_icon: Duskfox-Alt-3
     # gnome_theme:
-    theme_install_options: "--tweak nord float macos -l"
+    theme_install_options: "--tweaks nord float macos -l"
 
 - debug:
     msg: "Icon them: {{ theme_icon }}"
@@ -40,9 +40,19 @@
     - name: Set Icon theme.
       command: gsettings set org.gnome.desktop.interface icon-theme '{{ theme_icon }}'
 
-    # - name: Run the install.sh script
-    #   command: ./install.sh {{ theme_install_options }}
-    #   args:
-    #     chdir: /tmp/themepack/themes/
-  when: not them_icon_dir.stat.exists
+    - name: Install gtk theme.
+      command: ./install.sh {{ theme_install_options }}
+      args:
+        chdir: "/tmp/{{ theme_pack }}-main/themes"
+
+    # - name: Install gtk theme.
+    #   command: dconf write /org/gnome/shell/extensions/user-theme/name "'theme_name'"
+
+    - name: Cleanup downloaded theme package.
+      file:
+        state: absent
+        path: "/tmp/{{ theme_pack }}-main"
+
+
+  # when: not them_icon_dir.stat.exists
   become: false

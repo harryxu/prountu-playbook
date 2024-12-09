@@ -1,8 +1,17 @@
 ---
 - name: Configure host.
   hosts: all
+  become: false
+
+  vars_files:
+    - default.config.yml
+
+  pre_tasks:
+    # https://stackoverflow.com/a/26399105/157811
+    - name: get the username running the deploy
+      become: false
+      action: command whoami
+      register: current_username
 
   tasks:
-    - name: list files in tmp folder
-      become: false
-      command: ls /tmp/
+    - include_tasks: tasks/theme.yml
