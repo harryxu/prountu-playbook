@@ -1,7 +1,7 @@
 ---
 - name: fish shell PPA for Ubuntu
   apt_repository:
-    repo: ppa:fish-shell/release-3
+    repo: ppa:fish-shell/release-4
     state: present
 
 - name: Install fish shell
