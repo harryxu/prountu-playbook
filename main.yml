@@ -73,11 +73,9 @@
         chdir: /home/{{ current_username.stdout }}/.config
       with_items:
         - "git init"
-        - "git remote add origin https://github.com/harryxu/dotconfig.git"
+        - "git remote add origin git@github.com:harryxu/dotconfig.git"
         - "git fetch"
         - "git checkout origin/main -ft"
-        - "git submodule init"
-        - "git submodule update"
       when: not dotconfig_git.stat.exists
 
     - name: Change user shell to fish
